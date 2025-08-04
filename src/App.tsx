@@ -20,8 +20,8 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
+    <div className="bg-white mx-auto w-full justify-center items-center align-center">
+      <header className="absolute inset-x-0 top-0 z-50 justify-center items-center align-center">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
@@ -100,17 +100,15 @@ export default function App() {
         </Dialog>
       </header>
 
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="relative isolate px-4 pt-14 lg:px-8">
 
-        <div className="mx-auto max-w-2xl pt-12 sm:pt-18 lg:pt-28">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-          </div>
-          <div className="text-left">
+        <div className="mx-auto pt-12 sm:pt-18 lg:pt-28">
+          <div className="text-left ">
             <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
               KI-Merket
             </h1>
             <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-              Dette er en tjeneste som merker bildet/videoen for deg. Merket vil bli plassert øverst i venstre hjørne. Velg det merket som gir best synlighet til bakgrunnen.Merk at du kan kun laste opp og ned én fil av gangen.
+              Dette er en tjeneste som merker bildet/videoen for deg. Merket vil bli plassert øverst i venstre hjørne. Velg det merket som gir best synlighet til bakgrunnen. Merk at du kan kun laste opp og ned én fil av gangen.
             </p>
         
           </div>
@@ -136,13 +134,7 @@ export default function App() {
                 Hvorfor KI-Merking?
               </h1>
               <p className="mt-6 text-xl/8 text-gray-700">
-                Fra 2022 krever markedsføringsloven
-at retusjert reklamemateriell skal
-merkes. I ettertid har eksplosjonen av
-KI-generert innhold åpnet for en bred
-diskusjon om hvorvidt merking av
-generert innhold bør følge liknende 
-lovverk som retusjerte bilder.
+                Fra 2022 krever markedsføringsloven at retusjert reklamemateriell skal merkes. I ettertid har eksplosjonen av KI-generert innhold åpnet for en bred diskusjon om hvorvidt merking av generert innhold bør følge liknende lovverk som retusjerte bilder.
               </p>
             </div>
           </div>
@@ -157,11 +149,7 @@ lovverk som retusjerte bilder.
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="text-left max-w-xl text-base/7 text-gray-600 lg:max-w-lg">
-              <p>
-                
-I 2023 utførte Forbrukertilsynet en
-utredning av behovet for merking av
-innhold generert med kunstig intelligens.
+              <p> I 2023 utførte Forbrukertilsynet en utredning av behovet for merking av innhold generert med kunstig intelligens.
 Konklusjonen var å “stå på stedet hvil”,
 der vedtak ført i Europakommisjonen 
 skal være veiledende for beslutninger i
