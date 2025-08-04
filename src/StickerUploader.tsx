@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Toggle } from "@/components/ui/toggle";
-import { ToggleGroup, ToggleGroupItem } from "./components/ui/toggle-group";
 
 export default function StickerUploader() {
   const [image, setImage] = useState<string | null>(null);
