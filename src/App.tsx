@@ -2,16 +2,17 @@
 
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon, CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/24/outline'
 import './App.css'
 import Sticker from './StickerUploader'
+//import Content from './Example'
 
 
 const navigation = [
   
-  { name: 'Om merket', href: '/om-merket' },
-  { name: 'Last ned brukermanual', href: '/brukermanual' },
-  { name: 'Kontakt', href: '/kontakt' },
+  { name: 'Om merket', href: '#om-merket' },
+  { name: 'Last ned brukermanual', href: '/KI-merket-bruksmanual.pdf', download: true },
+  { name: 'Kontakt', href: '#kontakt' },
 
 ]
 
@@ -44,16 +45,11 @@ export default function App() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
+              <a key={item.name} href={item.href} download={item.download} className="text-sm/6 font-semibold text-gray-900">
                 {item.name}
               </a>
             ))}
           </div>
-          {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div> */}
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
           <div className="fixed inset-0 z-50" />
@@ -63,8 +59,8 @@ export default function App() {
                 <span className="sr-only">Your Company</span>
                 <img
                   alt=""
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                  className="h-8 w-auto"
+                  src="./Ki-merket.png"
+                  className="h-12 w-auto"
                 />
               </a>
               <button
@@ -83,20 +79,21 @@ export default function App() {
                     <a
                       key={item.name}
                       href={item.href}
+                      download={item.download}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       {item.name}
                     </a>
                   ))}
                 </div>
-                <div className="py-6">
+                {/* <div className="py-6">
                   <a
                     href="#"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                   >
                     Log in
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </DialogPanel>
@@ -125,15 +122,99 @@ export default function App() {
         <div className="z-10 mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-1">
          <Sticker
           />
-          {/* <img
-            alt="Product screenshot"
-            src="https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
-            width={2432}
-            height={1442}
-            className="w-3xl max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-228 md:-ml-4 lg:-ml-0"
-          /> */}
+    
         </div>
-        <div
+        {/* <Content/> */}
+        <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+      
+      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
+        <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div className="lg:pr-4">
+            <div className="lg:max-w-lg">
+              <p id="om-merket" className="text-base/7 font-semibold text-indigo-600">Om KI-merket</p>
+              <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+                Hvorfor KI-Merking?
+              </h1>
+              <p className="mt-6 text-xl/8 text-gray-700">
+                Fra 2022 krever markedsføringsloven
+at retusjert reklamemateriell skal
+merkes. I ettertid har eksplosjonen av
+KI-generert innhold åpnet for en bred
+diskusjon om hvorvidt merking av
+generert innhold bør følge liknende 
+lovverk som retusjerte bilder.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className=" p-12 lg:sticky lg:top-2 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+          <img
+            alt=""
+            src="KI-merking-eksempel.png"
+            className="w-xl max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 "
+          />
+        </div>
+        <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div className="lg:pr-4">
+            <div className="text-left max-w-xl text-base/7 text-gray-600 lg:max-w-lg">
+              <p>
+                
+I 2023 utførte Forbrukertilsynet en
+utredning av behovet for merking av
+innhold generert med kunstig intelligens.
+Konklusjonen var å “stå på stedet hvil”,
+der vedtak ført i Europakommisjonen 
+skal være veiledende for beslutninger i
+Norsk lov.
+              </p>
+              <ul role="list" className="mt-8 space-y-8 text-gray-600">
+                <li className="flex gap-x-3">
+                  <CloudArrowUpIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
+                  <span>
+                    <strong className="font-semibold text-gray-900">Push to deploy.</strong> Lorem ipsum, dolor sit amet
+                    consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                    blanditiis ratione.
+                  </span>
+                </li>
+                <li className="flex gap-x-3">
+                  <LockClosedIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
+                  <span>
+                    <strong className="font-semibold text-gray-900">Styrke forbrukerrettigheter.</strong> Anim aute id magna aliqua
+                    ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
+                  </span>
+                </li>
+                <li className="flex gap-x-3">
+                  <ServerIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
+                  <span>
+                    <strong className="text-left font-semibold text-gray-900">Database backups.</strong> Ac tincidunt sapien
+                    vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
+                  </span>
+                </li>
+              </ul>
+              <p className="text-left mt-8">
+                
+Det mener vi er for dårlig. For å komme disse reguleringene i forkjøpet, i et marked hvor forskjellen mellom genererte bilder og ekte blir mindre og mindre, har vi laget et KI-merke, som alle kan legge til på innhold.
+
+Vi tror at den beste måten å avdekke
+behovet for et KI-merke, er å teste det
+ut. 
+              </p>
+              {/* <h2 className="mt-16 text-2xl text-left font-bold tracking-tight text-gray-900">No server? No problem.</h2> */}
+              <p id="kontakt" className="text-left mt-6">
+                Hvis du har innspill eller tanker til
+KI-merket, send oss en mail på:
+              </p>
+              
+              <p className="text-left mt-6">
+<strong>herman@comte.no</strong> / <strong>bjorn@comte.no</strong>
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        {/* <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         >
@@ -156,10 +237,18 @@ export default function App() {
             }}
             className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
           />
-        </div>
+        </div> */}
       </div>
     </div>
+     {/* <footer className="w-full bg-gray-900">
+      <div className="w-full py-8 text-center text-gray-400">
+        <p className="text-sm">
+          &copy; {new Date().getFullYear()} KI-Merket. All rights reserved.
+        </p>
+      </div>
+    </footer> */}
     </div>
+   
   )
 
 }
