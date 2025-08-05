@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export default function StickerUploader() {
   const [image, setImage] = useState<string | null>(null);
@@ -100,17 +100,19 @@ export default function StickerUploader() {
   };
 
   return (
-    <div className="p-4 w-3xl mx-auto">
+    <div className="p-4 flex justify-center items-center">
       <Card>
         <CardContent className="space-y-4">
-          <div
-            onDrop={handleDrop}
-            onDragOver={(e) => e.preventDefault()}
-            className="w-full h-40 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-500 cursor-pointer"
-            onClick={() => fileInputRef.current?.click()}
-          >
-            Drag & drop an image here or click to upload
-          </div>
+          {!image && (
+            <div
+              onDrop={handleDrop}
+              onDragOver={(e) => e.preventDefault()}
+              className="w-full h-40 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-500 cursor-pointer"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              Drag & drop an image here or click to upload
+            </div>
+          )}
           <input
             type="file"
             accept="image/*"
@@ -118,42 +120,91 @@ export default function StickerUploader() {
             ref={fileInputRef}
             className="hidden"
           />
-
-          <div className="flex gap-4">
+          <div className="flex flex-row justify-between space-y-4">
+            <div className="flex gap-4">
+              <Button
+                variant="secondary"
+                onClick={() => setStickerColor("black")}
+              >
+                Svart merke
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => setStickerColor("white")}
+              >
+                Hvitt merke
+              </Button>
+            </div>
             <Button
               variant="secondary"
-              onClick={() => setStickerColor("black")}
+              onClick={handleSticker}
+              disabled={!image}
             >
-              Svart merke
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={() => setStickerColor("white")}
-            >
-              Hvitt merke
+              Se resultat
             </Button>
           </div>
 
-          {image && (
-            <img src={image} alt="Uploaded" className="max-w-full h-auto" />
-          )}
+          <div className="flex flex-row gap-4">
+            {image && (
+              <Card>
+                <CardContent className="p-4">
+                  <CardHeader>
+                    <strong>Bilde</strong>
+                  </CardHeader>
+                  <img
+                    src={image}
+                    alt="Uploaded"
+                    className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block"
+                    style={{
+                      width: "auto",
+                      height: "auto",
+                      maxHeight: "500px",
+                      minHeight: "300px",
+                      maxWidth: "780px",
+                      minWidth: "300px",
+                      objectFit: "contain",
+                      objectPosition: "center",
+                      display: "block",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                    }}
+                  />
+                </CardContent>
+              </Card>
+            )}
 
-          <Button variant="secondary" onClick={handleSticker} disabled={!image}>
-            Se resultat
-          </Button>
-
+            {result && (
+              <Card>
+                <CardContent className="p-4">
+                  <CardHeader>
+                    <strong>Resultat</strong>
+                  </CardHeader>
+                  <img
+                    src={result}
+                    alt="With Sticker"
+                    className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block"
+                    style={{
+                      width: "auto",
+                      height: "auto",
+                      maxHeight: "500px",
+                      minHeight: "300px",
+                      maxWidth: "780px",
+                      minWidth: "300px",
+                      objectFit: "contain",
+                      objectPosition: "center",
+                      display: "block",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                    }}
+                  />
+                </CardContent>
+              </Card>
+            )}
+          </div>
           {result && (
-            <>
-              <p className="mt-4 font-bold">Result:</p>
-              <img src={result} alt="With Sticker" className="max-w-full" />
-              <Button
-                variant="secondary"
-                onClick={handleDownload}
-                className="mt-2"
-              >
-                Last ned bilde
-              </Button>
-            </>
+            <Button variant="outline" onClick={handleDownload}>
+              Last ned merket bilde
+            </Button>
           )}
 
           <canvas ref={previewCanvasRef} className="hidden"></canvas>

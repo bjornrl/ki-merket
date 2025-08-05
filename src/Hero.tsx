@@ -11,8 +11,10 @@ export default function Hero() {
             KI-merket{" "}
           </h1>
           <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
+            Dette er en tjeneste som merker bildet/videoen for deg. Merket vil
+            bli plassert øverst i venstre hjørne. Velg det merket som gir best
+            synlighet til bakgrunnen. Merk at du kan kun laste opp og ned én fil
+            av gangen.
           </p>
         </div>
       </div>
