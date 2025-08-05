@@ -74,11 +74,18 @@ export default function StickerUploader() {
       ctx.drawImage(baseImg, 0, 0);
 
       const sticker = new Image();
-      sticker.src = stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
+      sticker.src =
+        stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
       sticker.onload = () => {
         const stickerWidth = baseImg.width * 0.25;
         const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
-        ctx.drawImage(sticker, baseImg.width - stickerWidth - 10, baseImg.height - stickerHeight - 10, stickerWidth, stickerHeight);
+        ctx.drawImage(
+          sticker,
+          baseImg.width - stickerWidth - 10,
+          baseImg.height - stickerHeight - 10,
+          stickerWidth,
+          stickerHeight
+        );
         setResult(canvas.toDataURL("image/png"));
       };
     };
@@ -113,11 +120,23 @@ export default function StickerUploader() {
           />
 
           <div className="flex gap-4">
-            <Button variant="secondary" onClick={()=> setStickerColor("black")}>Svart merke</Button>
-              <Button variant="secondary" onClick={()=> setStickerColor("white")}>Hvitt merke</Button>
+            <Button
+              variant="secondary"
+              onClick={() => setStickerColor("black")}
+            >
+              Svart merke
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => setStickerColor("white")}
+            >
+              Hvitt merke
+            </Button>
           </div>
 
-          {image && <img src={image} alt="Uploaded" className="max-w-full h-auto" />}
+          {image && (
+            <img src={image} alt="Uploaded" className="max-w-full h-auto" />
+          )}
 
           <Button variant="secondary" onClick={handleSticker} disabled={!image}>
             Se resultat
@@ -127,7 +146,11 @@ export default function StickerUploader() {
             <>
               <p className="mt-4 font-bold">Result:</p>
               <img src={result} alt="With Sticker" className="max-w-full" />
-              <Button variant="secondary" onClick={handleDownload} className="mt-2">
+              <Button
+                variant="secondary"
+                onClick={handleDownload}
+                className="mt-2"
+              >
                 Last ned bilde
               </Button>
             </>
