@@ -1,9 +1,5 @@
 import FAQ from "@/sections/FAQ";
-import {
-  ArrowDownIcon,
-  LockClosedIcon,
-  ServerIcon,
-} from "@heroicons/react/20/solid";
+import { ArrowDownIcon } from "@heroicons/react/20/solid";
 
 const sections = [
   { id: "hvorfor-ki-merket", label: "Hvorfor laget vi KI-merket" },
