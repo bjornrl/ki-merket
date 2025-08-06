@@ -55,20 +55,22 @@ export default function Example() {
                 materiale. Dette svekker forbrukerens evne til å vite hva som er
                 ekte, og kan bidra til å undergrave tilliten til informasjon og
                 merkevarer. Vi mener det er på tide å ta ansvar.
-                <dl className="my-10 space-y-8 text-base/7 text-gray-600 lg:max-w-none">
-                  {features.map((feature) => (
-                    <div key={feature.name} className="relative pl-9">
-                      <dt className="inline font-semibold text-gray-900">
-                        <feature.icon
-                          aria-hidden="true"
-                          className="absolute top-1 left-1 size-5 text-indigo-600"
-                        />
-                        {feature.name}
-                      </dt>{" "}
-                      <dd className="inline">{feature.description}</dd>
-                    </div>
-                  ))}
-                </dl>
+              </p>
+              <dl className="my-10 space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+                {features.map((feature) => (
+                  <div key={feature.name} className="relative pl-9">
+                    <dt className="inline font-semibold text-gray-900">
+                      <feature.icon
+                        aria-hidden="true"
+                        className="absolute top-1 left-1 size-5 text-indigo-600"
+                      />
+                      {feature.name}
+                    </dt>{" "}
+                    <dd className="inline">{feature.description}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className=" text-left mt-6 text-lg/8 text-gray-700">
                 Vi mener det er for dårlig å vente på formelle vedtak. For å
                 komme reguleringene i forkjøpet, i et marked hvor forskjellen
                 mellom genererte bilder og ekte blir stadig mindre, har vi
@@ -82,8 +84,13 @@ export default function Example() {
               >
                 Har du innspill eller tanker om KI-merket? Send oss gjerne en
                 e-post:
-                <a href="mailto:herman@comte.no"> Herman Billett </a>/{" "}
-                <a href="mailto:bjorn@comte.no"> Bjørn Ravlo-Leira </a>
+                <strong className="text-blue-700">
+                  <a href="mailto:herman@comte.no"> Herman Billett </a>
+                </strong>
+                /{" "}
+                <strong className="text-blue-700">
+                  <a href="mailto:bjorn@comte.no"> Bjørn Ravlo-Leira </a>
+                </strong>
               </p>
               <p className=" text-left mt-6 text-lg/8 text-gray-700">
                 Gi beskjed om du ønsker dette tilpasset for bruk i f.eks.

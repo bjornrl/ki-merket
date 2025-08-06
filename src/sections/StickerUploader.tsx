@@ -59,6 +59,12 @@ export default function StickerUploader() {
     handleFiles(e.target.files);
   };
 
+  // const [files, setFiles] = useState<File[]>([]);
+  // const handleFileUpload = (files: File[]) => {
+  //   setFiles(files);
+  //   console.log(files);
+  // };
+
   const handleSticker = () => {
     if (!image) return;
 
@@ -100,14 +106,14 @@ export default function StickerUploader() {
   };
 
   return (
-    <div className="p-4 flex justify-center items-center">
+    <div className="p-4 flex flex-col justify-center items-center">
       <Card>
         <CardContent className="space-y-4">
           {!image && (
             <div
               onDrop={handleDrop}
               onDragOver={(e) => e.preventDefault()}
-              className="w-full h-40 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-500 cursor-pointer"
+              className="w-full p-4 h-40 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-500 cursor-pointer"
               onClick={() => fileInputRef.current?.click()}
             >
               Drag & drop an image here or click to upload
@@ -120,29 +126,34 @@ export default function StickerUploader() {
             ref={fileInputRef}
             className="hidden"
           />
-          <div className="flex flex-row justify-between space-y-4">
-            <div className="flex gap-4">
+
+          {image && (
+            <div className="flex flex-row justify-between gap-4">
+              <div className="flex gap-4">
+                <Button
+                  variant="secondary"
+                  className="border focus:border-blue-500 border-transparent hover:border-blue-500 hover:text-blue-500"
+                  onClick={() => setStickerColor("black")}
+                >
+                  Svart merke
+                </Button>
+                <Button
+                  variant="secondary"
+                  className="border focus:border-blue-500 border-transparent hover:border-blue-500 hover:text-blue-500"
+                  onClick={() => setStickerColor("white")}
+                >
+                  Hvitt merke
+                </Button>
+              </div>
               <Button
-                variant="secondary"
-                onClick={() => setStickerColor("black")}
+                className="border bg-red-400 -border-green-600 border-transparent hover:border-blue-500 hover:text-blue-500"
+                onClick={handleSticker}
+                disabled={!image}
               >
-                Svart merke
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => setStickerColor("white")}
-              >
-                Hvitt merke
+                Se resultat
               </Button>
             </div>
-            <Button
-              variant="secondary"
-              onClick={handleSticker}
-              disabled={!image}
-            >
-              Se resultat
-            </Button>
-          </div>
+          )}
 
           <div className="flex flex-row gap-4">
             {image && (
@@ -155,19 +166,19 @@ export default function StickerUploader() {
                     src={image}
                     alt="Uploaded"
                     className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block"
-                    style={{
-                      width: "auto",
-                      height: "auto",
-                      maxHeight: "500px",
-                      minHeight: "300px",
-                      maxWidth: "780px",
-                      minWidth: "300px",
-                      objectFit: "contain",
-                      objectPosition: "center",
-                      display: "block",
-                      marginLeft: "auto",
-                      marginRight: "auto",
-                    }}
+                    // style={{
+                    //   width: "auto",
+                    //   height: "auto",
+                    //   maxHeight: "500px",
+                    //   minHeight: "300px",
+                    //   maxWidth: "780px",
+                    //   minWidth: "300px",
+                    //   objectFit: "contain",
+                    //   objectPosition: "center",
+                    //   display: "block",
+                    //   marginLeft: "auto",
+                    //   marginRight: "auto",
+                    // }}
                   />
                 </CardContent>
               </Card>
@@ -183,26 +194,30 @@ export default function StickerUploader() {
                     src={result}
                     alt="With Sticker"
                     className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block"
-                    style={{
-                      width: "auto",
-                      height: "auto",
-                      maxHeight: "500px",
-                      minHeight: "300px",
-                      maxWidth: "780px",
-                      minWidth: "300px",
-                      objectFit: "contain",
-                      objectPosition: "center",
-                      display: "block",
-                      marginLeft: "auto",
-                      marginRight: "auto",
-                    }}
+                    // style={{
+                    //   width: "auto",
+                    //   height: "auto",
+                    //   maxHeight: "500px",
+                    //   minHeight: "300px",
+                    //   maxWidth: "780px",
+                    //   minWidth: "300px",
+                    //   objectFit: "contain",
+                    //   objectPosition: "center",
+                    //   display: "block",
+                    //   marginLeft: "auto",
+                    //   marginRight: "auto",
+                    // }}
                   />
                 </CardContent>
               </Card>
             )}
           </div>
           {result && (
-            <Button variant="outline" onClick={handleDownload}>
+            <Button
+              className="border border-transparent hover:border-blue-500 hover:text-blue-500"
+              variant="outline"
+              onClick={handleDownload}
+            >
               Last ned merket bilde
             </Button>
           )}

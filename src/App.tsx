@@ -1,21 +1,17 @@
-"use client";
-
-import "./App.css";
-import Sticker from "./StickerUploader";
-import Example from "./Content";
-import Hero from "./Hero";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
-//import Content from './Example'
+import About from "./pages/About";
+import Home from "./pages/Home";
 
 export default function App() {
   return (
-    <>
+    <Router>
       <Nav />
-      <body className="pt-40 mx-124 flex justify-center">
-        <Hero />
-        <Sticker />
-        <Example />
-      </body>
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/om-ki-merket" element={<About />} />
+        {/* Add other routes here */}
+      </Routes>
+    </Router>
   );
 }

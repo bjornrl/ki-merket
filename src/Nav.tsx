@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
+import { Button } from "./components/ui/button";
 
 const navigation = [
-  { name: "Om merket", href: "#om-merket" },
+  { name: "Om merket", link: "/pages/about" },
   {
     name: "Last ned brukermanual",
-    href: "/KI-merket-bruksmanual.pdf",
+    link: "/KI-merket-bruksmanual.pdf",
     download: true,
   },
-  { name: "Kontakt", href: "#kontakt" },
+  { name: "Kontakt", link: "#kontakt" },
 ];
 
 export default function Nav() {
@@ -21,7 +23,7 @@ export default function Nav() {
         className="flex items-center justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">KI-Merket</span>
             <img alt="" src="./Ki-merket.png" className="h-18 w-auto" />
           </a>
@@ -37,16 +39,48 @@ export default function Nav() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <a
+          {/* Navigation Button */}
+          <Link to="/om-ki-merket">
+            <Button
+              className="border border-transparent hover:border-blue-500 hover:text-blue-500"
+              variant="secondary"
+            >
+              Om KI-merket
+            </Button>
+          </Link>
+
+          {/* Download Button */}
+          <a href="/path/to/your.pdf" download>
+            <Button
+              className="border border-transparent hover:border-blue-500 hover:text-blue-500"
+              variant="secondary"
+            >
+              Last ned PDF
+            </Button>
+          </a>
+
+          {/* Scroll Button */}
+          <Button
+            variant="secondary"
+            className="border border-transparent hover:border-blue-500 hover:text-blue-500"
+            onClick={() => {
+              document
+                .getElementById("kontakt")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Kontakt oss
+          </Button>
+          {/* {navigation.map((item) => (
+            <Link
               key={item.name}
-              href={item.href}
+              to={item.link}
               download={item.download}
               className="text-sm/6 p-2 rounded-xl font-semibold hover:bg-gray-50"
             >
               {item.name}
-            </a>
-          ))}
+            </Link>
+          ))} */}
         </div>
       </nav>
       <Dialog
@@ -74,14 +108,14 @@ export default function Nav() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
+                    to={item.link}
                     download={item.download}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
