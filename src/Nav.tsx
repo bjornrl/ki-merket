@@ -5,13 +5,22 @@ import { Link } from "react-router-dom";
 import { Button } from "./components/ui/button";
 
 const navigation = [
+  { name: "Hjem", link: "/" },
   { name: "Om merket", link: "/pages/about" },
   {
     name: "Last ned brukermanual",
     link: "/KI-merket-bruksmanual.pdf",
     download: true,
   },
-  { name: "Kontakt", link: "#kontakt" },
+  {
+    name: "Kontakt",
+    onClick: () => {
+      const footer = document.querySelector("footer");
+      if (footer) {
+        footer.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+  },
 ];
 
 export default function Nav() {
@@ -40,6 +49,14 @@ export default function Nav() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {/* Navigation Button */}
+          <Link to="/">
+            <Button
+              className="border border-transparent hover:border-blue-500 hover:text-blue-500"
+              variant="secondary"
+            >
+              Hjem
+            </Button>
+          </Link>
           <Link to="/om-ki-merket">
             <Button
               className="border border-transparent hover:border-blue-500 hover:text-blue-500"

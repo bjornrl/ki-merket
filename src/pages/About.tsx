@@ -1,5 +1,40 @@
-import FAQ from "@/sections/FAQ";
+//import FAQ from "@/sections/FAQ";
 import { ArrowDownIcon } from "@heroicons/react/20/solid";
+import { HoverEffect } from "@/components/card-hover-effect";
+
+const projects = [
+  {
+    title: "NRK",
+    description: "",
+    link: "https://info.nrk.no/nrks-retningslinjer-for-bruk-av-kunstig-intelligens/",
+    backgroundImage: "/Users/bjornrleira/Documents/ki-merket/public/nrk.png",
+  },
+  {
+    title: "Teknologirådet",
+    description: "",
+    link: "https://teknologiradet.no/blogg/mens-vi-venter-pa-ai-act-retningslinjer-for-kunstig-intelligens/",
+  },
+  {
+    title: "NTNU",
+    description: "",
+    link: "https://i.ntnu.no/documents/1305837853/1306916738/2025-05-06+Retningslinjer+for+bruk+av+IKT-verkt%C3%B8y+med+generativ+KI.pdf/66de9b81-8631-64fe-8ddc-2deca559b043?t=1749022115156",
+  },
+  {
+    title: "Helse Nord",
+    description: "",
+    link: "https://www.helse-nord.no/helsefaglig/kvalitet-og-pasientsikkerhet/retningslinjer-for-bruk-og-utvikling-av-kunstig-intelligens-i-helse-nord/://meta.com",
+  },
+  {
+    title: "Digdir",
+    description: "",
+    link: "https://www.digdir.no/kunstig-intelligens/veiledning-ansvarlig-bruk-og-utvikling-av-kunstig-intelligens/4601",
+  },
+  {
+    title: "Skatteetaten",
+    description: "",
+    link: "https://www.skatteetaten.no/stilogtone/god-praksis/kunstig-intelligens/",
+  },
+];
 
 const sections = [
   { id: "hvorfor-ki-merket", label: "Hvorfor laget vi KI-merket" },
@@ -18,6 +53,14 @@ const sections = [
   {
     id: "andre-eksempler-og-reaksjoner",
     label: "Andre eksempler og reaksjoner",
+  },
+  // {
+  //   id: "faq",
+  //   label: "Ofte stilte spørsmål",
+  // },
+  {
+    id: "relevante-artikler",
+    label: "Relevante artikler",
   },
   // Add more as needed
 ];
@@ -44,36 +87,8 @@ function Sidebar() {
 
 export default function About() {
   return (
-    <div className="flex flex-col justify-center mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+    <div className="flex flex-col justify-center mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 max-w-[1200px]">
       {" "}
-      {/* <h1 className="pt-40 text-3xl font-bold tracking-tight text-gray-900">
-        Om KI-merket
-      </h1>
-      <p className="mt-4 text-lg text-gray-700">
-        KI-merket er en tjeneste som automatisk merker bilder med et synlig
-        merke for å indikere at de er generert eller redigert ved hjelp av
-        kunstig intelligens. Dette bidrar til å øke bevisstheten om AI-generert
-        innhold og fremmer ansvarlig bruk av teknologi. <br></br>KI-merket er en
-        tjeneste som automatisk merker bilder med et synlig merke for å indikere
-        at de er generert eller redigert ved hjelp av kunstig intelligens. Dette
-        bidrar til å øke bevisstheten om AI-generert innhold og fremmer
-        ansvarlig bruk av teknologi.KI-merket er en tjeneste som automatisk
-        merker bilder med et synlig merke for å indikere at de er generert eller
-        redigert ved hjelp av kunstig intelligens. Dette bidrar til å øke
-        bevisstheten om AI-generert innhold og fremmer ansvarlig bruk av
-        teknologi.KI-merket er en tjeneste som automatisk merker bilder med et
-        synlig merke for å indikere at de er generert eller redigert ved hjelp
-        av kunstig intelligens. Dette bidrar til å øke bevisstheten om
-        AI-generert innhold og fremmer ansvarlig bruk av teknologi.KI-merket er
-        en tjeneste som automatisk merker bilder med et synlig merke for å
-        indikere at de er generert eller redigert ved hjelp av kunstig
-        intelligens. Dette bidrar til å øke bevisstheten om AI-generert innhold
-        og fremmer ansvarlig bruk av teknologi.KI-merket er en tjeneste som
-        automatisk merker bilder med et synlig merke for å indikere at de er
-        generert eller redigert ved hjelp av kunstig intelligens. Dette bidrar
-        til å øke bevisstheten om AI-generert innhold og fremmer ansvarlig bruk
-        av teknologi.
-      </p> */}
       <div className="relative flex isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <svg
@@ -115,9 +130,6 @@ export default function About() {
             <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
               <div className="lg:pr-4">
                 <div className="lg:max-w-lg">
-                  {/* <p className="text-base/7 font-semibold text-indigo-600">
-                  Deploy faster
-                </p> */}
                   <h1
                     id="hvorfor-ki-merket"
                     className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl"
@@ -127,7 +139,7 @@ export default function About() {
                   <p className="mt-6 text-xl/8 text-gray-700 text-left">
                     Kunstig intelligens (KI) er tilstede i de fleste, om ikke i
                     alle, aspekter ved fysisk og digital innholdsproduksjon. Per
-                    i dag (30.06.2025) finnes det ingen standard merking for
+                    i dag (06.08.2025) finnes det ingen standard merking for
                     innhold produsert av eller med kunstig intelligens, på samme
                     måte som det finnes for retusjert reklame. Dette er til
                     tross for at etterlysninger etter det er flere år gamle (se
@@ -140,12 +152,15 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
-                className="w-3xl max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
+                src="/ki-logo.jpg"
+                className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
+              <p className="mt-2 text-xs text-left">
+                (Illustrasjon: Magnus Hestad/Herman Billett/Bjørn Ravlo-Leira)
+              </p>
             </div>
             <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
               <div className="lg:pr-4">
@@ -183,6 +198,9 @@ export default function About() {
                 src="/retusjering-eksempel.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
+              <p className="mt-2 text-xs text-left">
+                (Illustrasjon: Forbrukertulsynet/Ada Wikdahl/Animer)
+              </p>
             </div>
             <div className="lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
               <div className="lg:pl-4">
@@ -235,10 +253,10 @@ export default function About() {
                 src="/tidligere-debatt-eksempel-1.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
-              <p className="text-left mt-4">
-                PNAS Nexus, Volume 4, Issue 6, June 2025,
+              <p className="mt-2 text-xs text-left">
+                (PNAS Nexus, Volume 4, Issue 6, June 2025,
                 pgaf170, https://doi.org/10.1093/pnasnexus/pgaf170 Published: 28
-                May 2025
+                May 2025)
               </p>
             </div>
             <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
@@ -247,10 +265,11 @@ export default function About() {
                 src="/tidligere-debatt-eksempel-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
-              <p className="text-left mt-4">
-                Lindsey, Drew. "A Deep Dive into AI Labels on Social Media."
+
+              <p className="mt-2 text-xs text-left">
+                (Lindsey, Drew. "A Deep Dive into AI Labels on Social Media."
                 https://fusecreate.com/a-deep-dive-into-ai-labels-on-social-media/,
-                15. april 2025.
+                15. april 2025.)
               </p>
             </div>
           </div>
@@ -268,7 +287,10 @@ export default function About() {
                 src="/eksempel-tidligere-bruk-1.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
-              <p className="text-left mt-4">Caption 1</p>
+              <p className="text-left mt-4">
+                Treningskjeden Sats med reklamestunt foran Stortinget i 2023
+              </p>
+              <p className="mt-2 text-xs text-left">(Foto: Kampanje.no)</p>
             </div>
             <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
@@ -276,10 +298,13 @@ export default function About() {
                 src="eksempel-tidligere-bruk-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
-              <p className="text-left mt-4">awdawd</p>
+              <p className="text-left mt-4">
+                Boligbyggelaget BORI sin kampanje fra 2024
+              </p>
+              <p className="mt-2 text-xs text-left">(Foto: BORI/Nucleus)</p>
             </div>
           </div>
-          <div className="mx-auto mt-12 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
+          {/* <div className="mx-auto mt-12 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
             <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
@@ -295,7 +320,7 @@ export default function About() {
               />
               <p className="text-left mt-4">awdawd</p>
             </div>
-          </div>
+          </div> */}
           {/*!!!*/}
           <h1
             id="andre-eksempler-og-reaksjoner"
@@ -310,11 +335,13 @@ export default function About() {
                 src="/velvet-sundown-1.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
+              <p className="mt-2 text-xs text-left">(Foto: tek.no)</p>
               <img
                 alt=""
                 src="/velvet-sundown-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
+              <p className="mt-2 text-xs text-left">(Foto: tek.no)</p>
             </div>
             <div className="lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
               <div className="lg:pl-4">
@@ -336,7 +363,7 @@ export default function About() {
                     eksisterer i virkeligheten, melder The Next Web.
                   </p>
 
-                  <p className="mt-6 text-base/7 text-gray-700 text-left">
+                  <p className="mt-2 text-xs text-left">
                     Kilde: Norum Bugge, Torstein. "Populært band på Spotify
                     fremstår som AI-generert: Har sneket seg inn på populære
                     spillelister." Publisert 1. juli. 2025
@@ -363,6 +390,10 @@ export default function About() {
                 til Buss-selskapet AtB i Trondheim som ble lanserte våren 2025.
                 (Foto: Skjermdump Atb_no Instagram)
               </p>
+              <p className="mt-2 text-xs text-left">
+                (Foto: Skjermdump Atb_no/Instagram)
+              </p>
+
               <ArrowDownIcon className="mx-auto w-12" />
             </div>
             <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
@@ -372,9 +403,9 @@ export default function About() {
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="text-left mt-4">
-                XXL brukte i 2023 AI-genererte modeller, i sine reklamer. (Foto
-                hentet fra kode24.no)
+                XXL brukte i 2023 AI-genererte modeller, i sine reklamer.
               </p>
+              <p className="mt-2 text-xs text-left">(Foto: kode24.no)</p>
               {/* <a
                 className="text-left"
                 href="https://www.kode24.no/artikkel/xxl-lagde-ai-genererte-modeller-uten-a-si-fra/192237"
@@ -391,7 +422,9 @@ export default function About() {
                 src="/atb-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
-              <p className="text-left mt-4">Skjermdump Adressa.no</p>
+              <p className="mt-2 text-xs text-left">
+                (Foto: Skjermdump Adressa.no)
+              </p>
             </div>
             <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
@@ -399,138 +432,27 @@ export default function About() {
                 src="/xxl-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
-              <p className="text-left mt-4">Skjermdump KOM24.no</p>
+              <p className="mt-2 text-xs text-left">
+                (Foto: Skjermdump KOM24.no)
+              </p>
+            </div>
+          </div>
+          {/* <div id="faq">
+            <FAQ />
+          </div> */}
+          <div id="relevante-artikler" className="mx-auto mt-12">
+            <h1
+              id="eksempler-tidligere-bruk"
+              className="mt-24 text-left text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl"
+            >
+              Relevante artikler og veiledere om bruk av KI
+            </h1>
+            <div className="max-w-5xl mx-auto px-8">
+              <HoverEffect items={projects} />
             </div>
           </div>
         </div>
-        {/* <div className="bg-white py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl lg:text-center">
-              <h2 className="text-base/7 font-semibold text-indigo-600">
-                Deploy faster
-              </h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
-                Markering av justert materiale{" "}
-              </p>
-              <p className="mt-6 text-lg/8 text-gray-700">
-                Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-                Suspendisse eget egestas a elementum pulvinar et feugiat blandit
-                at. In mi viverra elit nunc.
-              </p>
-            </div>
-            <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-              <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-                <div className="relative pl-16">
-                  <dt className="text-base/7 font-semibold text-gray-900">
-                    <div className="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        data-slot="icon"
-                        aria-hidden="true"
-                        className="size-6 text-white"
-                      >
-                        <path
-                          d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    Push to deploy
-                  </dt>
-                  <dd className="mt-2 text-base/7 text-gray-600">
-                    Morbi viverra dui mi arcu sed. Tellus semper adipiscing
-                    suspendisse semper morbi. Odio urna massa nunc massa.
-                  </dd>
-                </div>
-                <div className="relative pl-16">
-                  <dt className="text-base/7 font-semibold text-gray-900">
-                    <div className="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        data-slot="icon"
-                        aria-hidden="true"
-                        className="size-6 text-white"
-                      >
-                        <path
-                          d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    SSL certificates
-                  </dt>
-                  <dd className="mt-2 text-base/7 text-gray-600">
-                    Sit quis amet rutrum tellus ullamcorper ultricies libero
-                    dolor eget. Sem sodales gravida quam turpis enim lacus amet.
-                  </dd>
-                </div>
-                <div className="relative pl-16">
-                  <dt className="text-base/7 font-semibold text-gray-900">
-                    <div className="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        data-slot="icon"
-                        aria-hidden="true"
-                        className="size-6 text-white"
-                      >
-                        <path
-                          d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    Simple queues
-                  </dt>
-                  <dd className="mt-2 text-base/7 text-gray-600">
-                    Quisque est vel vulputate cursus. Risus proin diam nunc
-                    commodo. Lobortis auctor congue commodo diam neque.
-                  </dd>
-                </div>
-                <div className="relative pl-16">
-                  <dt className="text-base/7 font-semibold text-gray-900">
-                    <div className="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        data-slot="icon"
-                        aria-hidden="true"
-                        className="size-6 text-white"
-                      >
-                        <path
-                          d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    Advanced security
-                  </dt>
-                  <dd className="mt-2 text-base/7 text-gray-600">
-                    Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt
-                    mattis aliquet hac quis. Id hac maecenas ac donec pharetra
-                    eget.
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div> */}
       </div>
-      <FAQ />
     </div>
   );
 }

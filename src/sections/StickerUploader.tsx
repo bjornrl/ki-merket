@@ -132,21 +132,22 @@ export default function StickerUploader() {
               <div className="flex gap-4">
                 <Button
                   variant="secondary"
-                  className="border focus:border-blue-500 border-transparent hover:border-blue-500 hover:text-blue-500"
+                  className="border focus:border-blue-500 border-transparent hover:cursor-pointer hover:border-blue-500 hover:text-blue-500"
                   onClick={() => setStickerColor("black")}
                 >
                   Svart merke
                 </Button>
                 <Button
                   variant="secondary"
-                  className="border focus:border-blue-500 border-transparent hover:border-blue-500 hover:text-blue-500"
+                  className="border focus:border-blue-500 border-transparent hover:cursor-pointer hover:border-blue-500 hover:text-blue-500"
                   onClick={() => setStickerColor("white")}
                 >
                   Hvitt merke
                 </Button>
               </div>
               <Button
-                className="border bg-red-400 -border-green-600 border-transparent hover:border-blue-500 hover:text-blue-500"
+                className="border border-transparent hover:cursor-pointer hover:border-green-500 hover:text-green-500"
+                variant={"secondary"}
                 onClick={handleSticker}
                 disabled={!image}
               >
@@ -166,19 +167,6 @@ export default function StickerUploader() {
                     src={image}
                     alt="Uploaded"
                     className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block"
-                    // style={{
-                    //   width: "auto",
-                    //   height: "auto",
-                    //   maxHeight: "500px",
-                    //   minHeight: "300px",
-                    //   maxWidth: "780px",
-                    //   minWidth: "300px",
-                    //   objectFit: "contain",
-                    //   objectPosition: "center",
-                    //   display: "block",
-                    //   marginLeft: "auto",
-                    //   marginRight: "auto",
-                    // }}
                   />
                 </CardContent>
               </Card>
@@ -194,19 +182,6 @@ export default function StickerUploader() {
                     src={result}
                     alt="With Sticker"
                     className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block"
-                    // style={{
-                    //   width: "auto",
-                    //   height: "auto",
-                    //   maxHeight: "500px",
-                    //   minHeight: "300px",
-                    //   maxWidth: "780px",
-                    //   minWidth: "300px",
-                    //   objectFit: "contain",
-                    //   objectPosition: "center",
-                    //   display: "block",
-                    //   marginLeft: "auto",
-                    //   marginRight: "auto",
-                    // }}
                   />
                 </CardContent>
               </Card>
@@ -214,8 +189,8 @@ export default function StickerUploader() {
           </div>
           {result && (
             <Button
-              className="border border-transparent hover:border-blue-500 hover:text-blue-500"
-              variant="outline"
+              className="border border-transparent hover:border-black hover:cursor-pointer"
+              variant="ghost"
               onClick={handleDownload}
             >
               Last ned merket bilde
