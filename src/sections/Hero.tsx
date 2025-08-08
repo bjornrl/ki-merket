@@ -5,7 +5,7 @@ export default function Hero() {
         aria-hidden="true"
         className="absolute -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
       ></div>
-      <div className="mx-auto py-4 px-96 sm:py-6 lg:py-12">
+      <div className="mx-auto py-4 px-2 lg:px-96 sm:py-6 lg:py-12">
         <div className="text-center">
           <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
             KI-merket{" "}

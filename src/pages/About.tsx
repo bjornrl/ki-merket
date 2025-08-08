@@ -67,8 +67,8 @@ const sections = [
 
 function Sidebar() {
   return (
-    <nav className="top-40 p-4 w-64 flex flex-col gap-10">
-      <ul className="text-left fixed space-y-2 w-full">
+    <nav className="top-40 p-4 w-64 flex lg:flex-col gap-10">
+      <ul className="text-left lg:fixed space-y-2 w-full">
         {sections.map((section) => (
           <li key={section.id} className="w-full">
             <a
@@ -121,7 +121,7 @@ export default function About() {
             />
           </svg>
         </div>
-        <div>
+        <div className="hidden lg:block">
           <Sidebar />
         </div>
         <div className="flex flex-col">
@@ -136,7 +136,7 @@ export default function About() {
                   >
                     Hvorfor laget vi KI-merket?
                   </h1>
-                  <p className="mt-6 text-xl/8 text-gray-700 text-left">
+                  <p className="mt-6 text-base/7 lg:text-xl/8 text-gray-700 text-left">
                     Kunstig intelligens (KI) er tilstede i de fleste, om ikke i
                     alle, aspekter ved fysisk og digital innholdsproduksjon. Per
                     i dag (06.08.2025) finnes det ingen standard merking for
@@ -152,7 +152,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/ki-logo.jpg"
@@ -182,9 +182,9 @@ export default function About() {
                     En pågående diskusjon{" "}
                   </h2>
                   <p className="mt-6 text-left">
-                    Det må sies at samtalen om KI og innholdsproduksjon fortsatt
-                    pågår, og vi ønsker at dette merket skal være et bidrag til
-                    en mer åpen og ærlig dialog.
+                    Vi annerkjenner at samtalen om KI og innholdsproduksjon
+                    fortsatt pågår, og vi ønsker at dette merket skal være et
+                    bidrag til en mer åpen og ærlig dialog.
                   </p>
                 </div>
               </div>
@@ -192,7 +192,7 @@ export default function About() {
           </div>
           {/* Duplicated: image left, text right */}
           <div className="mx-auto mt-24 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/retusjering-eksempel.jpg"
@@ -211,8 +211,8 @@ export default function About() {
                   >
                     Markering av justert materiale{" "}
                   </h1>
-                  <p className="mt-6 text-xl/8 text-gray-700 text-left">
-                    1. Juli 2022 ble det markedsføringslovens paragraf 2 krevd
+                  <p className="mt-6 text-base/7 lg:text-xl/8 text-gray-700 text-left">
+                    1. Juli 2022 ble det i markedsføringslovens paragraf 2 krevd
                     at all reklame der en kropps fasong, størrelse eller hud er
                     endret ved retusjering eller annen manipulering, skal merkes
                     med et standardmerke. Formålet med den nye regelen var å
@@ -223,9 +223,9 @@ export default function About() {
                     ut i virkeligheten. Målet er å redusere bruken av
                     idealiserte kropper som er retusjert i reklame.
                   </p>
-                  <div className="max-w-xl text-left text-base/7 text-gray-600 lg:max-w-lg mt-8">
+                  <div className="text-left text-base/7 text-gray-600 lg:max-w-lg mt-8">
                     <p>
-                      Som nevnt i over, vil formålet med KI-merket være å gi
+                      Som nevnt over, vil formålet med KI-merket være å gi
                       opplysning til forbrukere om hvordan innhold er produsert
                       og hvilken virkelighet den formidler. På samme måte som
                       retusjert reklame ønsker vi å sikre forbrukerrettigheter
@@ -247,7 +247,7 @@ export default function About() {
             Tidligere debatt om KI-merking{" "}
           </h1>{" "}
           <div className="mx-auto mt-12 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/tidligere-debatt-eksempel-1.jpg"
@@ -259,7 +259,7 @@ export default function About() {
                 May 2025)
               </p>
             </div>
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/tidligere-debatt-eksempel-2.jpg"
@@ -281,7 +281,7 @@ export default function About() {
             Tidligere bruk av KI-merking{" "}
           </h1>{" "}
           <div className="mx-auto mt-12 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/eksempel-tidligere-bruk-1.jpg"
@@ -292,7 +292,7 @@ export default function About() {
               </p>
               <p className="mt-2 text-xs text-left">(Foto: Kampanje.no)</p>
             </div>
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="eksempel-tidligere-bruk-2.jpg"
@@ -305,14 +305,14 @@ export default function About() {
             </div>
           </div>
           {/* <div className="mx-auto mt-12 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 -mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="eksempel-tidligere-bruk-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
             </div>
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 -mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="eksempel-tidligere-bruk-2.jpg"
@@ -329,7 +329,7 @@ export default function About() {
             Andre eksempler og reaksjoner{" "}
           </h1>{" "}
           <div className="mx-auto mt-24 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 -mr-12 flex flex-col gap-4 p-12 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 flex flex-col gap-4 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/velvet-sundown-1.jpg"
@@ -379,7 +379,7 @@ export default function About() {
             Norske eksempler
           </h2>
           <div className="mx-auto mt-12 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/atb-1.jpg"
@@ -396,7 +396,7 @@ export default function About() {
 
               <ArrowDownIcon className="mx-auto w-12" />
             </div>
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/xxl-1.jpg"
@@ -416,7 +416,7 @@ export default function About() {
             </div>
           </div>
           <div className="mx-auto grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/atb-2.jpg"
@@ -426,7 +426,7 @@ export default function About() {
                 (Foto: Skjermdump Adressa.no)
               </p>
             </div>
-            <div className="-mt-12 -mr-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
                 src="/xxl-2.jpg"
@@ -447,7 +447,7 @@ export default function About() {
             >
               Relevante artikler og veiledere om bruk av KI
             </h1>
-            <div className="max-w-5xl mx-auto px-8">
+            <div className="max-w-5xl mx-auto px-2 lg:px-8">
               <HoverEffect items={projects} />
             </div>
           </div>

@@ -76,18 +76,15 @@ export default function Nav() {
             </Button>
           </a>
 
-          {/* Scroll Button */}
-          <Button
-            variant="secondary"
-            className="border border-transparent hover:border-blue-500 hover:text-blue-500"
-            onClick={() => {
-              document
-                .getElementById("kontakt")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}
-          >
-            Kontakt oss
-          </Button>
+          {/* Contact Button */}
+          <Link to="/kontakt">
+            <Button
+              variant="secondary"
+              className="border border-transparent hover:border-blue-500 hover:text-blue-500"
+            >
+              Kontakt oss
+            </Button>
+          </Link>
           {/* {navigation.map((item) => (
             <Link
               key={item.name}
@@ -124,7 +121,37 @@ export default function Nav() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {navigation.map((item) => (
+                <Link
+                  className="-mx-3 block rounded-lg px-3 py-2 text-lg text-center font-semibold text-gray-900 hover:bg-gray-50 lg:text-base lg:text-left"
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Hjem
+                </Link>
+                <Link
+                  className="-mx-3 block rounded-lg px-3 py-2 text-lg text-center font-semibold text-gray-900 hover:bg-gray-50 lg:text-base lg:text-left"
+                  to="/om-ki-merket"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Om KI-merket
+                </Link>
+                <a
+                  className="-mx-3 block rounded-lg px-3 py-2 text-lg text-center font-semibold text-gray-900 hover:bg-gray-50 lg:text-base lg:text-left"
+                  href="/KI-merket-bruksmanual.pdf"
+                  download
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Last ned brukermanual
+                </a>
+
+                <Link
+                  className="-mx-3 block rounded-lg px-3 py-2 text-lg text-center font-semibold text-gray-900 hover:bg-gray-50 lg:text-base lg:text-left"
+                  to="/kontakt"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Kontakt oss
+                </Link>
+                {/* {navigation.map((item) => (
                   <Link
                     key={item.name}
                     to={item.link}
@@ -133,7 +160,7 @@ export default function Nav() {
                   >
                     {item.name}
                   </Link>
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
