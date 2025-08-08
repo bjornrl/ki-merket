@@ -87,8 +87,8 @@ export default function StickerUploader() {
         const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
         ctx.drawImage(
           sticker,
-          baseImg.width - stickerWidth - 10,
-          baseImg.height - stickerHeight - 10,
+          baseImg.width - stickerWidth - 30,
+          baseImg.height - stickerHeight - 30,
           stickerWidth,
           stickerHeight
         );
