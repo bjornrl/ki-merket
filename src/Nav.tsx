@@ -4,24 +4,24 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { Button } from "./components/ui/button";
 
-const navigation = [
-  { name: "Hjem", link: "/" },
-  { name: "Om merket", link: "/pages/about" },
-  {
-    name: "Last ned brukermanual",
-    link: "/KI-merket-bruksmanual.pdf",
-    download: true,
-  },
-  {
-    name: "Kontakt",
-    onClick: () => {
-      const footer = document.querySelector("footer");
-      if (footer) {
-        footer.scrollIntoView({ behavior: "smooth" });
-      }
-    },
-  },
-];
+// const navigation = [
+//   { name: "Hjem", link: "/" },
+//   { name: "Om merket", link: "/pages/about" },
+//   {
+//     name: "Last ned brukermanual",
+//     link: "/KI-merket-bruksmanual.pdf",
+//     download: true,
+//   },
+//   {
+//     name: "Kontakt",
+//     onClick: () => {
+//       const footer = document.querySelector("footer");
+//       if (footer) {
+//         footer.scrollIntoView({ behavior: "smooth" });
+//       }
+//     },
+//   },
+// ];
 
 export default function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
