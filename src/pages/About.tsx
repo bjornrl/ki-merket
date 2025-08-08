@@ -379,64 +379,48 @@ export default function About() {
             Norske eksempler
           </h2>
           <div className="mx-auto mt-12 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-              <img
-                alt=""
-                src="/atb-1.jpg"
-                className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
-              />
-              <p className="text-left mt-4">
-                Hentet fra den mye omdiskuterte Ki produserte reklame-kampanjen
-                til Buss-selskapet AtB i Trondheim som ble lanserte våren 2025.
-                (Foto: Skjermdump Atb_no Instagram)
-              </p>
-              <p className="mt-2 text-xs text-left">
-                (Foto: Skjermdump Atb_no/Instagram)
-              </p>
-
-              <ArrowDownIcon className="mx-auto w-12" />
-            </div>
-            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-              <img
-                alt=""
-                src="/xxl-1.jpg"
-                className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
-              />
-              <p className="text-left mt-4">
-                XXL brukte i 2023 AI-genererte modeller, i sine reklamer.
-              </p>
-              <p className="mt-2 text-xs text-left">(Foto: kode24.no)</p>
-              {/* <a
-                className="text-left"
-                href="https://www.kode24.no/artikkel/xxl-lagde-ai-genererte-modeller-uten-a-si-fra/192237"
+            <div
+              id="atb-eksempel"
+              className="flex flex-col gap-4 justify-center items-center"
+            >
+              <h3
+                id="markering-justert-materiale"
+                className="mt-2 text-lg text-left tracking-tight text-pretty text-gray-900 sm:text-xl"
               >
-                Link
-              </a> */}
-              <ArrowDownIcon className="mx-auto w-12" />
-            </div>
-          </div>
-          <div className="mx-auto grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
-            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-              <img
-                alt=""
-                src="/atb-2.jpg"
-                className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
-              />
+                AtB fikk kritikk for den nye kampanjen sin der de har brukt
+                kunstig intelligens. Selskapet sa selv at de har fått mange
+                positive tilbakemeldinger på bildene.
+              </h3>
+              <img src="/atb-1.jpg" alt="ATB" className="w-full rounded-xl" />
+              <p className="mt-2 text-xs text-left">(Foto: Instagram/Atb_no)</p>
+              <ArrowDownIcon className="w-8 h-8 outline-1 outline-gray-400/10 rounded-full p-2" />
+              <img src="/atb-2.jpg" alt="ATB" className="w-full rounded-xl" />
               <p className="mt-2 text-xs text-left">
-                (Foto: Skjermdump Adressa.no)
+                Kilde: Addressa.no/Karoline Ulvenes
               </p>
             </div>
-            <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-              <img
-                alt=""
-                src="/xxl-2.jpg"
-                className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
-              />
-              <p className="mt-2 text-xs text-left">
-                (Foto: Skjermdump KOM24.no)
-              </p>
+            <div id="xxl-eksempel">
+              <div
+                id="xxl-eksempel"
+                className="flex flex-col gap-4 justify-center items-center"
+              >
+                <h3
+                  id="markering-justert-materiale"
+                  className="mt-2 text-lg text-left tracking-tight text-pretty text-gray-900 sm:text-xl"
+                >
+                  XXL lagde AI-genererte modeller, uten å si fra
+                </h3>
+                <img src="/xxl-1.jpg" alt="xxl" className="w-full rounded-xl" />
+                <p className="mt-2 text-xs text-left">(Foto: XXL)</p>
+                <ArrowDownIcon className="w-8 h-8 outline-1 outline-gray-400/10 rounded-full p-2" />
+                <img src="/xxl-2.jpg" alt="xxl" className="w-full rounded-xl" />
+                <p className="mt-2 text-xs text-left">
+                  Kilde: Kode24/Ole Petter Baugerød Stokke
+                </p>
+              </div>
             </div>
           </div>
+          <div className="mx-auto grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10"></div>
           {/* <div id="faq">
             <FAQ />
           </div> */}
