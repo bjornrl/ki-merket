@@ -146,7 +146,7 @@ export default function StickerUploader() {
                 </Button>
               </div>
               <Button
-                className="border border-transparent hover:cursor-pointer hover:border-green-500 hover:text-green-500"
+                className="bg-gray-700 hover:bg-gray-800 text-white border border-transparent hover:cursor-pointer hover:border-green-500 hover:text-green-500"
                 variant={"secondary"}
                 onClick={handleSticker}
                 disabled={!image}
@@ -189,7 +189,7 @@ export default function StickerUploader() {
           </div>
           {result && (
             <Button
-              className="border border-transparent hover:border-black hover:cursor-pointer"
+              className="bg-blue-700 text-white border border-transparent hover:border-black hover:cursor-pointer"
               variant="ghost"
               onClick={handleDownload}
             >

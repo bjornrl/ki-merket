@@ -12,16 +12,17 @@ export default function Footer() {
           >
             <img src="/Comte-logo.png" className="h-8" alt="Comte Logo" />
           </a>
-          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-200 sm:mb-0 dark:text-gray-400">
-            <li>
-              <a
-                href="https://www.comte.no/kontakt"
-                className="hover:underline me-4 md:me-6"
-              >
-                Kontakt oss
-              </a>
-            </li>
-          </ul>
+
+          <p className="text-white">
+            Denne siden er produsert ved hjelp av KI-verktøy.
+          </p>
+
+          <a
+            href="https://www.comte.no/kontakt"
+            className="hover:underline me-4 md:me-6 text-white"
+          >
+            Kontakt oss
+          </a>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">

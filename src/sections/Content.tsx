@@ -35,7 +35,7 @@ export default function Example() {
               {/* <h2 className="text-base/7 font-semibold text-indigo-600">
                 Deploy faster
               </h2> */}
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl text-left">
                 Om KI-merket
               </p>
               <p className=" text-left mt-6 text-lg/8 text-gray-700">
@@ -90,6 +90,10 @@ export default function Example() {
                 /{" "}
                 <strong className="text-blue-700">
                   <a href="mailto:bjorn@comte.no"> Bjørn Ravlo-Leira </a>
+                </strong>
+                /{" "}
+                <strong className="text-blue-700">
+                  <a href="mailto:magnus@comte.no"> Magnus Hestad </a>
                 </strong>
               </p>
               <p className=" text-left mt-6 text-lg/8 text-gray-700">
