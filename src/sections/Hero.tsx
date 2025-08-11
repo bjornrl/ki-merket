@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <div className="relative isolate px-6 pt-14 lg:px-8">
+    <div className="relative isolate px-6 lg:px-8">
       <div
         aria-hidden="true"
         className="absolute -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -11,8 +11,8 @@ export default function Hero() {
             KI-merket{" "}
           </h1>
           <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-            Dette er en tjeneste som merker bildet/videoen for deg. Merket vil
-            bli plassert øverst i venstre hjørne. Velg det merket som gir best
+            Dette er en tjeneste som merker bildet for deg. Merket vil bli
+            plassert nederst i høyre hjørne. Velg det merket som gir best
             synlighet til bakgrunnen. Merk at du kan kun laste opp og ned én fil
             av gangen.
           </p>
