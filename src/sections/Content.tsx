@@ -1,27 +1,27 @@
 import {
-  CloudArrowUpIcon,
-  LockClosedIcon,
-  ServerIcon,
+  SunIcon,
+  DocumentTextIcon,
+  MegaphoneIcon,
 } from "@heroicons/react/20/solid";
 
 const features = [
   {
-    name: "Gi innovative aktører muligheten til å vise ørlighet og transpasens",
+    name: "Gi innovative aktører muligheten til å vise ærlighet og transpasens",
     description:
       "Vi tror aktører som bruker KI-generert innhold bør kunne vise at de er åpne om dette. Dette kan bidra til å bygge tillit hos forbrukere.",
-    icon: CloudArrowUpIcon,
+    icon: SunIcon,
   },
   {
     name: "Komme reguleringer i forkjøpet",
     description:
       "Vi tror det kan ha positive ringvirkninger å komme formelle vedtak i forkjøpet.",
-    icon: LockClosedIcon,
+    icon: DocumentTextIcon,
   },
   {
     name: "Styrke forbrukerrettigheter",
     description:
       "På lik måte som at retusjerte bilder skal merkes, mener vi at KI-generert innhold bør merkes. Dette gir forbrukere bedre mulighet til å ta informerte valg.",
-    icon: ServerIcon,
+    icon: MegaphoneIcon,
   },
 ];
 
