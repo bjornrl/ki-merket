@@ -116,7 +116,7 @@ export default function StickerUploader() {
               className="w-full p-4 h-40 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-500 cursor-pointer"
               onClick={() => fileInputRef.current?.click()}
             >
-              Drag & drop an image here or click to upload
+              Dra og slipp ett bilde inn i boksen, eller trykk for å laste opp.
             </div>
           )}
           <input

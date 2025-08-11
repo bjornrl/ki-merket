@@ -172,10 +172,7 @@ export default function About() {
                     offentlig tilgjengelig for alle som ønsker å bruke det.
                     Intensjonen med merket er ikke å forstyrre uttrykket til
                     innholdet som blir produsert, men å gjøre publikum
-                    oppmerksom på hvordan det er laget. Vi anerkjenner at siste
-                    ord ikke er sagt i diskusjonen om KI-produsert innhold, men
-                    håper denne merkingen kan være med på å skape åpenhet om
-                    temaet.
+                    oppmerksom på hvordan det er laget.
                   </p>
 
                   <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
@@ -212,7 +209,7 @@ export default function About() {
                     Markering av justert materiale{" "}
                   </h1>
                   <p className="mt-6 text-base/7 lg:text-xl/8 text-gray-700 text-left">
-                    1. Juli 2022 ble det i markedsføringslovens paragraf 2 krevd
+                    1. juli 2022 ble det i markedsføringslovens paragraf 2 krevd
                     at all reklame der en kropps fasong, størrelse eller hud er
                     endret ved retusjering eller annen manipulering, skal merkes
                     med et standardmerke. Formålet med den nye regelen var å
@@ -284,24 +281,28 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="/eksempel-tidligere-bruk-1.jpg"
+                src="/Sats.png"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="text-left mt-4">
                 Treningskjeden Sats med reklamestunt foran Stortinget i 2023
               </p>
-              <p className="mt-2 text-xs text-left">(Foto: Kampanje.no)</p>
+              <p className="mt-2 text-xs text-left">
+                (Foto: Skjermdump/Kampanje.no)
+              </p>
             </div>
             <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="eksempel-tidligere-bruk-2.jpg"
+                src="bori.png"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="text-left mt-4">
                 Boligbyggelaget BORI sin kampanje fra 2024
               </p>
-              <p className="mt-2 text-xs text-left">(Foto: BORI/Nucleus)</p>
+              <p className="mt-2 text-xs text-left">
+                (Foto: Skjermdump/KOM24 (BORI/Nucleus))
+              </p>
             </div>
           </div>
           {/* <div className="mx-auto mt-12 grid  grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:grid-cols-2 lg:items-start lg:gap-y-10">
@@ -335,13 +336,17 @@ export default function About() {
                 src="/velvet-sundown-1.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
-              <p className="mt-2 text-xs text-left">(Foto: tek.no)</p>
+              <p className="mt-2 text-xs text-left">
+                (Foto: Skjermdump/tek.no)
+              </p>
               <img
                 alt=""
                 src="/velvet-sundown-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
-              <p className="mt-2 text-xs text-left">(Foto: tek.no)</p>
+              <p className="mt-2 text-xs text-left">
+                (Foto: Skjermdump/tek.no)
+              </p>
             </div>
             <div className="lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
               <div className="lg:pl-4">

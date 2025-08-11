@@ -6,19 +6,19 @@ import {
 
 const features = [
   {
-    name: "Gi innovative aktører muligheten til å vise ærlighet og transpasens",
+    name: "Gi innovative aktører muligheten til å vise ærlighet og transpasens.",
     description:
       "Vi tror aktører som bruker KI-generert innhold bør kunne vise at de er åpne om dette. Dette kan bidra til å bygge tillit hos forbrukere.",
     icon: SunIcon,
   },
   {
-    name: "Komme reguleringer i forkjøpet",
+    name: "Komme reguleringer i forkjøpet.",
     description:
       "Vi tror det kan ha positive ringvirkninger å komme formelle vedtak i forkjøpet.",
     icon: DocumentTextIcon,
   },
   {
-    name: "Styrke forbrukerrettigheter",
+    name: "Styrke forbrukerrettigheter.",
     description:
       "På lik måte som at retusjerte bilder skal merkes, mener vi at KI-generert innhold bør merkes. Dette gir forbrukere bedre mulighet til å ta informerte valg.",
     icon: MegaphoneIcon,
@@ -58,7 +58,7 @@ export default function Example() {
               </p>
               <dl className="my-10 space-y-8 text-base/7 text-gray-600 lg:max-w-none">
                 {features.map((feature) => (
-                  <div key={feature.name} className="relative pl-9">
+                  <div key={feature.name} className="relative text-left pl-9">
                     <dt className="inline font-semibold text-gray-900">
                       <feature.icon
                         aria-hidden="true"
@@ -66,6 +66,7 @@ export default function Example() {
                       />
                       {feature.name}
                     </dt>{" "}
+                    <br></br>
                     <dd className="inline">{feature.description}</dd>
                   </div>
                 ))}
