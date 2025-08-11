@@ -104,7 +104,7 @@ export default function Example() {
           </div>
           <img
             alt="Product screenshot"
-            src="public/KI-merking-eksempel.png"
+            src="/KI-merking-eksempel.png"
             className="w-3xl rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-228 md:-ml-4 lg:-ml-0"
           />
         </div>

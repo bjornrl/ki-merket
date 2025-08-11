@@ -67,7 +67,7 @@ export default function Nav() {
           </Link>
 
           {/* Download Button */}
-          <a href="public/KI-merket_branding_guide.pdf" download>
+          <a href="/KI-merket_branding_guide.pdf" download>
             <Button
               className="border border-transparent hover:border-blue-500 hover:text-blue-500"
               variant="secondary"
