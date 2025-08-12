@@ -8,13 +8,13 @@ const features = [
   {
     name: "Gi innovative aktører muligheten til å vise ærlighet og transpasens.",
     description:
-      "Vi tror aktører som bruker KI-generert innhold bør kunne vise at de er åpne om dette. Dette kan bidra til å bygge tillit hos forbrukere.",
+      "Vi tror aktører som er ærlige om bruk av KI-genererte bilder og tekst vil bygge tillit hos forbrukerne og få et konkurransefortrinn.",
     icon: SunIcon,
   },
   {
     name: "Komme reguleringer i forkjøpet.",
     description:
-      "Vi tror det kan ha positive ringvirkninger å komme formelle vedtak i forkjøpet.",
+      "Vi tror det kan ha positive ringvirkninger å komme formelle vedtak i forkjøpet, ved at vi får testet i praksis og samlet erfaringer før regulering.",
     icon: DocumentTextIcon,
   },
   {

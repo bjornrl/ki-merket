@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <div className="relative isolate px-6 lg:px-8">
+    <div className="relative isolate px-6 pt-6 lg:px-8">
       <div
         aria-hidden="true"
         className="absolute -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

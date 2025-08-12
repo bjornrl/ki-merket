@@ -333,7 +333,7 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 flex flex-col gap-4 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="/velvet-sundown-1.jpg"
+                src="/velvet-sundown-1.png"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="mt-2 text-xs text-left">
@@ -341,7 +341,7 @@ export default function About() {
               </p>
               <img
                 alt=""
-                src="/velvet-sundown-2.jpg"
+                src="/velvet-sundown-2.png"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="mt-2 text-xs text-left">
