@@ -75,6 +75,14 @@ export default function Nav() {
               Last ned PDF
             </Button>
           </a>
+          <a href="/kimerket.zip" download>
+            <Button
+              className="border border-transparent hover:border-blue-500 hover:text-blue-500"
+              variant="secondary"
+            >
+              Last ned .zip
+            </Button>
+          </a>
 
           {/* Contact Button */}
           <Link to="/kontakt">
