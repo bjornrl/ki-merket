@@ -39,13 +39,22 @@ export default function Example() {
                 Om KI-merket
               </p>
               <p className=" text-left mt-6 text-lg/8 text-gray-700">
-                Fra 2022 krever markedsføringsloven at retusjert
+                Fra 2022 krever markedsføringsloven at retusjerte personer i
                 reklamemateriell skal merkes. I ettertid har eksplosjonen av
                 KI-generert innhold åpnet for en bred diskusjon om hvorvidt
                 merking av generert innhold bør følge liknende lovverk som
                 retusjerte bilder.{" "}
               </p>
               <p className=" text-left mt-6 text-lg/8 text-gray-700">
+                I 2023 utførte Forbrukertilsynet en utredning om loven for
+                retusjert reklame kan håndheves for Kunstig Intelligns
+                Konklusjonen er at de ikke kan håndheve kravet om merking
+                overfor KI-generert innhold. Både tilsynet og bransjen ser
+                derfor et sterkt behov for lovendring. Vi ønsker å sette ord inn
+                i handling ved å tilgjengeliggjøre ett merke og et verktøy for å
+                bruke det.
+              </p>
+              {/* <p>
                 I 2023 utførte Forbrukertilsynet en utredning av behovet for
                 merking av innhold generert med kunstig intelligens.
                 Konklusjonen var å “stå på stedet hvil”, der vedtak fattet i
@@ -55,7 +64,7 @@ export default function Example() {
                 materiale. Dette svekker forbrukerens evne til å vite hva som er
                 ekte, og kan bidra til å undergrave tilliten til informasjon og
                 merkevarer. Vi mener det er på tide å ta ansvar.
-              </p>
+              </p> */}
               <dl className="my-10 space-y-8 text-base/7 text-gray-600 lg:max-w-none">
                 {features.map((feature) => (
                   <div key={feature.name} className="relative text-left pl-9">
