@@ -6,6 +6,7 @@ export default function StickerUploader() {
   const [image, setImage] = useState<string | null>(null);
   const [result, setResult] = useState<string | null>(null);
   const [stickerColor, setStickerColor] = useState<"black" | "white">("black");
+  const [stickerSizePercent, setStickerSizePercent] = useState<number>(25); // percentage of image width
   const fileInputRef = useRef<HTMLInputElement>(null);
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -83,7 +84,7 @@ export default function StickerUploader() {
       sticker.src =
         stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
       sticker.onload = () => {
-        const stickerWidth = baseImg.width * 0.25;
+        const stickerWidth = baseImg.width * (stickerSizePercent / 100);
         const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
         ctx.drawImage(
           sticker,
@@ -144,6 +145,26 @@ export default function StickerUploader() {
                 >
                   Hvitt merke
                 </Button>
+                <div className="flex items-center gap-2">
+                  <label
+                    htmlFor="sticker-size"
+                    className="text-sm text-gray-700"
+                  >
+                    Størrelse: {stickerSizePercent}%
+                  </label>
+                  <input
+                    id="sticker-size"
+                    type="range"
+                    min={5}
+                    max={50}
+                    step={1}
+                    value={stickerSizePercent}
+                    onChange={(e) =>
+                      setStickerSizePercent(Number(e.target.value))
+                    }
+                    className="h-2 w-40 cursor-pointer appearance-none rounded bg-gray-200 accent-black"
+                  />
+                </div>
               </div>
               <Button
                 className="bg-gray-700 hover:bg-gray-800 text-white border border-transparent hover:cursor-pointer hover:border-green-500 hover:text-green-500"
