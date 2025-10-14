@@ -281,7 +281,7 @@ export default function StickerUploader() {
                   <input
                     id="sticker-size"
                     type="range"
-                    min={5}
+                    min={15}
                     max={50}
                     step={1}
                     value={stickerSizePercent}
