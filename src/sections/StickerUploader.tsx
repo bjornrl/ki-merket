@@ -1,12 +1,17 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export default function StickerUploader() {
   const [image, setImage] = useState<string | null>(null);
-  const [result, setResult] = useState<string | null>(null);
   const [stickerColor, setStickerColor] = useState<"black" | "white">("black");
   const [stickerSizePercent, setStickerSizePercent] = useState<number>(25); // percentage of image width
+  const [stickerOpacityPercent, setStickerOpacityPercent] =
+    useState<number>(100); // 45 - 100
+  const [stickerXPercent, setStickerXPercent] = useState<number>(100); // 0-100 from left
+  const [stickerYPercent, setStickerYPercent] = useState<number>(100); // 0-100 from top
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const dragOffsetRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const fileInputRef = useRef<HTMLInputElement>(null);
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -37,6 +42,155 @@ export default function StickerUploader() {
     };
   };
 
+  const getPointerPosOnCanvas = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+  ) => {
+    const canvas = previewCanvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+    const rect = canvas.getBoundingClientRect();
+    const clientX =
+      "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+    const clientY =
+      "touches" in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    return {
+      x: (clientX - rect.left) * scaleX,
+      y: (clientY - rect.top) * scaleY,
+    };
+  };
+
+  const handleCanvasDown = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+  ) => {
+    if (!image) return;
+    e.preventDefault();
+    const canvas = previewCanvasRef.current;
+    if (!canvas) return;
+
+    const baseImg = new Image();
+    baseImg.src = image;
+    baseImg.onload = () => {
+      const sticker = new Image();
+      sticker.src =
+        stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
+      sticker.onload = () => {
+        const stickerWidth = baseImg.width * (stickerSizePercent / 100);
+        const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
+        const maxX = baseImg.width - stickerWidth;
+        const maxY = baseImg.height - stickerHeight;
+        const currentX = Math.max(
+          0,
+          Math.min(maxX, (stickerXPercent / 100) * maxX)
+        );
+        const currentY = Math.max(
+          0,
+          Math.min(maxY, (stickerYPercent / 100) * maxY)
+        );
+
+        const p = getPointerPosOnCanvas(e);
+        const withinX = p.x >= currentX && p.x <= currentX + stickerWidth;
+        const withinY = p.y >= currentY && p.y <= currentY + stickerHeight;
+        if (withinX && withinY) {
+          dragOffsetRef.current = { x: p.x - currentX, y: p.y - currentY };
+          setIsDragging(true);
+        }
+      };
+    };
+  };
+
+  const handleCanvasMove = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+  ) => {
+    if (!isDragging || !image) return;
+    e.preventDefault();
+    const canvas = previewCanvasRef.current;
+    if (!canvas) return;
+
+    const baseImg = new Image();
+    baseImg.src = image;
+    baseImg.onload = () => {
+      const sticker = new Image();
+      sticker.src =
+        stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
+      sticker.onload = () => {
+        const stickerWidth = baseImg.width * (stickerSizePercent / 100);
+        const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
+        const maxX = baseImg.width - stickerWidth;
+        const maxY = baseImg.height - stickerHeight;
+
+        const p = getPointerPosOnCanvas(e);
+        let newX = p.x - dragOffsetRef.current.x;
+        let newY = p.y - dragOffsetRef.current.y;
+        newX = Math.max(0, Math.min(maxX, newX));
+        newY = Math.max(0, Math.min(maxY, newY));
+
+        setStickerXPercent((newX / maxX) * 100);
+        setStickerYPercent((newY / maxY) * 100);
+      };
+    };
+  };
+
+  const handleCanvasUp = () => {
+    if (isDragging) setIsDragging(false);
+  };
+
+  const renderSticker = () => {
+    if (!image) return;
+
+    const canvas = previewCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const baseImg = new Image();
+    baseImg.src = image;
+    baseImg.onload = () => {
+      canvas.width = baseImg.width;
+      canvas.height = baseImg.height;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(baseImg, 0, 0);
+
+      const sticker = new Image();
+      sticker.src =
+        stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
+      sticker.onload = () => {
+        const stickerWidth = baseImg.width * (stickerSizePercent / 100);
+        const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
+        const previousAlpha = ctx.globalAlpha;
+        ctx.globalAlpha = Math.max(
+          0.45,
+          Math.min(1, stickerOpacityPercent / 100)
+        );
+        const maxX = baseImg.width - stickerWidth;
+        const maxY = baseImg.height - stickerHeight;
+        const drawX = Math.max(
+          0,
+          Math.min(maxX, (stickerXPercent / 100) * maxX)
+        );
+        const drawY = Math.max(
+          0,
+          Math.min(maxY, (stickerYPercent / 100) * maxY)
+        );
+
+        ctx.drawImage(sticker, drawX, drawY, stickerWidth, stickerHeight);
+        ctx.globalAlpha = previousAlpha;
+      };
+    };
+  };
+
+  useEffect(() => {
+    if (!image) return;
+    renderSticker();
+  }, [
+    image,
+    stickerColor,
+    stickerSizePercent,
+    stickerOpacityPercent,
+    stickerXPercent,
+    stickerYPercent,
+  ]);
+
   const handleFiles = (files: FileList | null) => {
     const file = files?.[0];
     if (!file) return;
@@ -45,7 +199,6 @@ export default function StickerUploader() {
     reader.onloadend = () => {
       const result = reader.result as string;
       setImage(result);
-      setResult(null);
       setTimeout(() => recommendStickerColor(), 0);
     };
     reader.readAsDataURL(file);
@@ -67,41 +220,14 @@ export default function StickerUploader() {
   // };
 
   const handleSticker = () => {
-    if (!image) return;
-
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const baseImg = new Image();
-    baseImg.src = image;
-    baseImg.onload = () => {
-      canvas.width = baseImg.width;
-      canvas.height = baseImg.height;
-      ctx.drawImage(baseImg, 0, 0);
-
-      const sticker = new Image();
-      sticker.src =
-        stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
-      sticker.onload = () => {
-        const stickerWidth = baseImg.width * (stickerSizePercent / 100);
-        const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
-        ctx.drawImage(
-          sticker,
-          baseImg.width - stickerWidth - 30,
-          baseImg.height - stickerHeight - 30,
-          stickerWidth,
-          stickerHeight
-        );
-        setResult(canvas.toDataURL("image/png"));
-      };
-    };
+    renderSticker();
   };
 
   const handleDownload = () => {
-    if (!result) return;
+    const canvas = previewCanvasRef.current;
+    if (!canvas) return;
     const a = document.createElement("a");
-    a.href = result;
+    a.href = canvas.toDataURL("image/png");
     a.download = "stickered-image.png";
     a.click();
   };
@@ -165,50 +291,65 @@ export default function StickerUploader() {
                     className="h-2 w-40 cursor-pointer appearance-none rounded bg-gray-200 accent-black"
                   />
                 </div>
+                <div className="flex items-center gap-2">
+                  <label
+                    htmlFor="sticker-opacity"
+                    className="text-sm text-gray-700"
+                  >
+                    Opasitet: {stickerOpacityPercent}%
+                  </label>
+                  <input
+                    id="sticker-opacity"
+                    type="range"
+                    min={45}
+                    max={100}
+                    step={1}
+                    value={stickerOpacityPercent}
+                    onChange={(e) =>
+                      setStickerOpacityPercent(Number(e.target.value))
+                    }
+                    className="h-2 w-40 cursor-pointer appearance-none rounded bg-gray-200 accent-black"
+                  />
+                </div>
               </div>
-              <Button
+              {/* <Button
                 className="bg-gray-700 hover:bg-gray-800 text-white border border-transparent hover:cursor-pointer hover:border-green-500 hover:text-green-500"
                 variant={"secondary"}
                 onClick={handleSticker}
                 disabled={!image}
               >
                 Se resultat
-              </Button>
+              </Button> */}
             </div>
           )}
 
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-row gap-4 justify-center">
             {image && (
-              <Card>
-                <CardContent className="p-4">
-                  <CardHeader>
-                    <strong>Bilde</strong>
-                  </CardHeader>
-                  <img
-                    src={image}
-                    alt="Uploaded"
-                    className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block"
-                  />
-                </CardContent>
-              </Card>
-            )}
-
-            {result && (
               <Card>
                 <CardContent className="p-4">
                   <CardHeader>
                     <strong>Resultat</strong>
                   </CardHeader>
-                  <img
-                    src={result}
-                    alt="With Sticker"
-                    className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block"
-                  />
+                  <p>
+                    Merket kan dras til der du synes det passer best på bildet.
+                  </p>
+                  <br />
+                  <canvas
+                    ref={previewCanvasRef}
+                    className="max-h-[300px] max-w-[780px] h-auto w-auto mx-auto block touch-none"
+                    onMouseDown={(e) => handleCanvasDown(e)}
+                    onMouseMove={(e) => handleCanvasMove(e)}
+                    onMouseUp={handleCanvasUp}
+                    onMouseLeave={handleCanvasUp}
+                    onTouchStart={(e) => handleCanvasDown(e)}
+                    onTouchMove={(e) => handleCanvasMove(e)}
+                    onTouchEnd={handleCanvasUp}
+                  ></canvas>
                 </CardContent>
               </Card>
             )}
           </div>
-          {result && (
+          {image && (
             <Button
               className="bg-blue-700 text-white border border-transparent hover:border-black hover:cursor-pointer"
               variant="ghost"
@@ -217,8 +358,6 @@ export default function StickerUploader() {
               Last ned merket bilde
             </Button>
           )}
-
-          <canvas ref={previewCanvasRef} className="hidden"></canvas>
         </CardContent>
       </Card>
     </div>
