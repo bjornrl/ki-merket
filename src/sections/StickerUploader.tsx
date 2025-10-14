@@ -219,9 +219,9 @@ export default function StickerUploader() {
   //   console.log(files);
   // };
 
-  const handleSticker = () => {
-    renderSticker();
-  };
+  // const handleSticker = () => {
+  //   renderSticker();
+  // };
 
   const handleDownload = () => {
     const canvas = previewCanvasRef.current;
