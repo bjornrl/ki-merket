@@ -10,10 +10,13 @@ export default function StickerUploader() {
     useState<number>(100); // 45 - 100
   const [stickerXPercent, setStickerXPercent] = useState<number>(100); // 0-100 from left
   const [stickerYPercent, setStickerYPercent] = useState<number>(100); // 0-100 from top
+  const [generationType, setGenerationType] = useState<"fully" | "partially">("fully");
+  const [partialDescription, setPartialDescription] = useState<string>("");
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const dragOffsetRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const fileInputRef = useRef<HTMLInputElement>(null);
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
+  const renderIdRef = useRef(0);
 
   const recommendStickerColor = () => {
     if (!image || !previewCanvasRef.current) return;
@@ -73,20 +76,25 @@ export default function StickerUploader() {
     baseImg.onload = () => {
       const sticker = new Image();
       sticker.src =
-        stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
+        generationType === "partially"
+          ? stickerColor === "white"
+            ? "/merke/delvis-generert-hvit.png"
+            : "/merke/delvis-generert.png"
+          : stickerColor === "white"
+            ? "/merke/Ki-merket-hvit.png"
+            : "/merke/Ki-merket.png";
       sticker.onload = () => {
         const stickerWidth = baseImg.width * (stickerSizePercent / 100);
         const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
-        const maxX = baseImg.width - stickerWidth;
-        const maxY = baseImg.height - stickerHeight;
-        const currentX = Math.max(
-          0,
-          Math.min(maxX, (stickerXPercent / 100) * maxX)
-        );
-        const currentY = Math.max(
-          0,
-          Math.min(maxY, (stickerYPercent / 100) * maxY)
-        );
+        const margin = 0.05;
+        const minX = baseImg.width * margin;
+        const minY = baseImg.height * margin;
+        const maxX = baseImg.width - stickerWidth - baseImg.width * margin;
+        const maxY = baseImg.height - stickerHeight - baseImg.height * margin;
+        const rangeX = Math.max(0, maxX - minX);
+        const rangeY = Math.max(0, maxY - minY);
+        const currentX = minX + (stickerXPercent / 100) * rangeX;
+        const currentY = minY + (stickerYPercent / 100) * rangeY;
 
         const p = getPointerPosOnCanvas(e);
         const withinX = p.x >= currentX && p.x <= currentX + stickerWidth;
@@ -112,21 +120,32 @@ export default function StickerUploader() {
     baseImg.onload = () => {
       const sticker = new Image();
       sticker.src =
-        stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
+        generationType === "partially"
+          ? stickerColor === "white"
+            ? "/merke/delvis-generert-hvit.png"
+            : "/merke/delvis-generert.png"
+          : stickerColor === "white"
+            ? "/merke/Ki-merket-hvit.png"
+            : "/merke/Ki-merket.png";
       sticker.onload = () => {
         const stickerWidth = baseImg.width * (stickerSizePercent / 100);
         const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
-        const maxX = baseImg.width - stickerWidth;
-        const maxY = baseImg.height - stickerHeight;
+        const margin = 0.05;
+        const minX = baseImg.width * margin;
+        const minY = baseImg.height * margin;
+        const maxX = baseImg.width - stickerWidth - baseImg.width * margin;
+        const maxY = baseImg.height - stickerHeight - baseImg.height * margin;
+        const rangeX = Math.max(0, maxX - minX);
+        const rangeY = Math.max(0, maxY - minY);
 
         const p = getPointerPosOnCanvas(e);
         let newX = p.x - dragOffsetRef.current.x;
         let newY = p.y - dragOffsetRef.current.y;
-        newX = Math.max(0, Math.min(maxX, newX));
-        newY = Math.max(0, Math.min(maxY, newY));
+        newX = Math.max(minX, Math.min(maxX, newX));
+        newY = Math.max(minY, Math.min(maxY, newY));
 
-        setStickerXPercent((newX / maxX) * 100);
-        setStickerYPercent((newY / maxY) * 100);
+        setStickerXPercent(rangeX > 0 ? ((newX - minX) / rangeX) * 100 : 0);
+        setStickerYPercent(rangeY > 0 ? ((newY - minY) / rangeY) * 100 : 0);
       };
     };
   };
@@ -143,9 +162,12 @@ export default function StickerUploader() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const renderId = ++renderIdRef.current;
+
     const baseImg = new Image();
     baseImg.src = image;
     baseImg.onload = () => {
+      if (renderId !== renderIdRef.current) return;
       canvas.width = baseImg.width;
       canvas.height = baseImg.height;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -153,8 +175,15 @@ export default function StickerUploader() {
 
       const sticker = new Image();
       sticker.src =
-        stickerColor === "white" ? "/Ki-merket-hvit.png" : "/Ki-merket.png";
+        generationType === "partially"
+          ? stickerColor === "white"
+            ? "/merke/delvis-generert-hvit.png"
+            : "/merke/delvis-generert.png"
+          : stickerColor === "white"
+            ? "/merke/Ki-merket-hvit.png"
+            : "/merke/Ki-merket.png";
       sticker.onload = () => {
+        if (renderId !== renderIdRef.current) return;
         const stickerWidth = baseImg.width * (stickerSizePercent / 100);
         const stickerHeight = (sticker.height / sticker.width) * stickerWidth;
         const previousAlpha = ctx.globalAlpha;
@@ -162,18 +191,39 @@ export default function StickerUploader() {
           0.45,
           Math.min(1, stickerOpacityPercent / 100)
         );
-        const maxX = baseImg.width - stickerWidth;
-        const maxY = baseImg.height - stickerHeight;
-        const drawX = Math.max(
-          0,
-          Math.min(maxX, (stickerXPercent / 100) * maxX)
-        );
-        const drawY = Math.max(
-          0,
-          Math.min(maxY, (stickerYPercent / 100) * maxY)
-        );
+        const margin = 0.05;
+        const minX = baseImg.width * margin;
+        const minY = baseImg.height * margin;
+        const maxX = baseImg.width - stickerWidth - baseImg.width * margin;
+        const maxY = baseImg.height - stickerHeight - baseImg.height * margin;
+        const rangeX = Math.max(0, maxX - minX);
+        const rangeY = Math.max(0, maxY - minY);
+        const drawX = minX + (stickerXPercent / 100) * rangeX;
+        const drawY = minY + (stickerYPercent / 100) * rangeY;
 
         ctx.drawImage(sticker, drawX, drawY, stickerWidth, stickerHeight);
+
+        if (generationType === "partially" && partialDescription.trim()) {
+          const padding = stickerHeight * 0.08;
+          const fontSize = Math.max(10, stickerWidth * 0.12);
+          const lineHeight = fontSize * 1.2;
+          const maxCharsPerLine = 10;
+          const raw = partialDescription.trim();
+          const lines: string[] = [];
+          for (let i = 0; i < raw.length; i += maxCharsPerLine) {
+            lines.push(raw.slice(i, i + maxCharsPerLine));
+          }
+          ctx.font = `${fontSize}px sans-serif`;
+          ctx.textAlign = "center";
+          ctx.fillStyle = stickerColor === "black" ? "#111" : "#fff";
+          const textX = drawX + stickerWidth / 2;
+          let textY = drawY + stickerHeight + padding + fontSize;
+          for (const line of lines) {
+            ctx.fillText(line, textX, textY);
+            textY += lineHeight;
+          }
+        }
+
         ctx.globalAlpha = previousAlpha;
       };
     };
@@ -189,6 +239,8 @@ export default function StickerUploader() {
     stickerOpacityPercent,
     stickerXPercent,
     stickerYPercent,
+    generationType,
+    partialDescription,
   ]);
 
   const handleFiles = (files: FileList | null) => {
@@ -311,7 +363,48 @@ export default function StickerUploader() {
                     className="h-2 w-40 cursor-pointer appearance-none rounded bg-gray-200 accent-black"
                   />
                 </div>
+                <div className="flex items-center gap-3 border-l pl-4">
+                  <span className="text-sm text-gray-700">Generert:</span>
+                  <label className="flex items-center gap-1.5 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="generation-type"
+                      checked={generationType === "fully"}
+                      onChange={() => setGenerationType("fully")}
+                      className="accent-black"
+                    />
+                    <span className="text-sm">Helt generert</span>
+                  </label>
+                  <label className="flex items-center gap-1.5 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="generation-type"
+                      checked={generationType === "partially"}
+                      onChange={() => setGenerationType("partially")}
+                      className="accent-black"
+                    />
+                    <span className="text-sm">Delvis generert</span>
+                  </label>
+                </div>
               </div>
+              {generationType === "partially" && (
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="partial-description"
+                    className="text-sm text-gray-700"
+                  >
+                    Beskriv hva som er generert/redigert (vises under merket)
+                  </label>
+                  <input
+                    id="partial-description"
+                    type="text"
+                    value={partialDescription}
+                    onChange={(e) => setPartialDescription(e.target.value)}
+                    placeholder="F.eks. Himmel og bakgrunn generert med KI"
+                    className="w-full max-w-md px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+              )}
               {/* <Button
                 className="bg-gray-700 hover:bg-gray-800 text-white border border-transparent hover:cursor-pointer hover:border-green-500 hover:text-green-500"
                 variant={"secondary"}

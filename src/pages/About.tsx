@@ -7,7 +7,7 @@ const projects = [
     title: "NRK",
     description: "",
     link: "https://info.nrk.no/nrks-retningslinjer-for-bruk-av-kunstig-intelligens/",
-    backgroundImage: "/Users/bjornrleira/Documents/ki-merket/public/nrk.png",
+    backgroundImage: "/andre/nrk.png",
   },
   {
     title: "Teknologirådet",
@@ -155,7 +155,7 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="/ki-logo.jpg"
+                src="/merke/ki-logo.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="mt-2 text-xs text-left">
@@ -192,7 +192,7 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="/retusjering-eksempel.jpg"
+                src="/andre/retusjering-eksempel.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="mt-2 text-xs text-left">
@@ -247,7 +247,7 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="/tidligere-debatt-eksempel-1.jpg"
+                src="/andre/tidligere-debatt-eksempel-1.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="mt-2 text-xs text-left">
@@ -259,7 +259,7 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="/tidligere-debatt-eksempel-2.jpg"
+                src="/andre/tidligere-debatt-eksempel-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
 
@@ -281,7 +281,7 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="/Sats.png"
+                src="/andre/Sats.png"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="text-left mt-4">
@@ -294,7 +294,7 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="bori.png"
+                src="/andre/bori.png"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="text-left mt-4">
@@ -309,14 +309,14 @@ export default function About() {
             <div className="-mt-12 -mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="eksempel-tidligere-bruk-2.jpg"
+                src="/andre/eksempel-tidligere-bruk-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
             </div>
             <div className="-mt-12 -mr-12 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="eksempel-tidligere-bruk-2.jpg"
+                src="/andre/eksempel-tidligere-bruk-2.jpg"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="text-left mt-4">awdawd</p>
@@ -333,7 +333,7 @@ export default function About() {
             <div className="-mt-12 lg:-mr-12 flex flex-col gap-4 p-1 lg:p-8 lg:sticky lg:top-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src="/velvet-sundown-1.png"
+                src="/andre/velvet-sundown-1.png"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="mt-2 text-xs text-left">
@@ -341,7 +341,7 @@ export default function About() {
               </p>
               <img
                 alt=""
-                src="/velvet-sundown-2.png"
+                src="/andre/velvet-sundown-2.png"
                 className=" rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
               />
               <p className="mt-2 text-xs text-left">
@@ -396,10 +396,10 @@ export default function About() {
                 kunstig intelligens. Selskapet sa selv at de har fått mange
                 positive tilbakemeldinger på bildene.
               </h3>
-              <img src="/atb-1.jpg" alt="ATB" className="w-full rounded-xl" />
+              <img src="/andre/atb-1.jpg" alt="ATB" className="w-full rounded-xl" />
               <p className="mt-2 text-xs text-left">(Foto: Instagram/Atb_no)</p>
               <ArrowDownIcon className="w-8 h-8 outline-1 outline-gray-400/10 rounded-full p-2" />
-              <img src="/atb-2.jpg" alt="ATB" className="w-full rounded-xl" />
+              <img src="/andre/atb-2.jpg" alt="ATB" className="w-full rounded-xl" />
               <p className="mt-2 text-xs text-left">
                 Kilde: Addressa.no/Karoline Ulvenes
               </p>
@@ -415,10 +415,10 @@ export default function About() {
                 >
                   XXL lagde AI-genererte modeller, uten å si fra
                 </h3>
-                <img src="/xxl-1.jpg" alt="xxl" className="w-full rounded-xl" />
+                <img src="/andre/xxl-1.jpg" alt="xxl" className="w-full rounded-xl" />
                 <p className="mt-2 text-xs text-left">(Foto: XXL)</p>
                 <ArrowDownIcon className="w-8 h-8 outline-1 outline-gray-400/10 rounded-full p-2" />
-                <img src="/xxl-2.jpg" alt="xxl" className="w-full rounded-xl" />
+                <img src="/andre/xxl-2.jpg" alt="xxl" className="w-full rounded-xl" />
                 <p className="mt-2 text-xs text-left">
                   Kilde: Kode24/Ole Petter Baugerød Stokke
                 </p>
