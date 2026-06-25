@@ -4,6 +4,7 @@ import "./../App.css";
 import Sticker from "../sections/StickerUploader";
 import Example from "../sections/Content";
 import Hero from "../sections/Hero";
+import MediaBanner from "../sections/MediaBanner";
 //import Content from './Example'
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="pt-32 max-x-[1200px]">
         <Hero />
         <Sticker />
+        <MediaBanner />
         <Example />
       </div>
     </>

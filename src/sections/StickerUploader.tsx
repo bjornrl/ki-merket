@@ -207,7 +207,7 @@ export default function StickerUploader() {
           const padding = stickerHeight * 0.08;
           const fontSize = Math.max(10, stickerWidth * 0.12);
           const lineHeight = fontSize * 1.2;
-          const maxCharsPerLine = 10;
+          const maxCharsPerLine = 20;
           const raw = partialDescription.trim();
           const lines: string[] = [];
           for (let i = 0; i < raw.length; i += maxCharsPerLine) {
